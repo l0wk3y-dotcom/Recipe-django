@@ -1,0 +1,29 @@
+{%include 'block.html'%}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4">Add recipe</h2>
+  <form method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+    <div class="mb-3">
+      <label for="recipename" class="form-label">Recipe name</label>
+      <input type="text" class="form-control" id="recipename" name="recipe_name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="recipedescription" class="form-label">Description</label>
+      <input type="text" class="form-control" id="recipedescription" name="recipe_description" required>
+    </div>
+
+    <div class="mb-3 form-check">
+      <label class="form-label" for="exampleCheck1">Uploac image</label>
+      <input type="file" class="form-control" id="exampleCheck1" name="image" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Add recipe</button>
+  </form>
+</div>
+
+{% endblock %}
+
+

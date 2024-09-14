@@ -1,0 +1,40 @@
+{% include 'block.html' %}
+
+{% block content %}
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+      <a href="/logout"><button class="btn btn-outline-danger">Logout</button></a>
+  </div>
+</nav>
+    <div class="container mt-5">
+        <form action="" method="GET" class="d-flex">
+            <input type="text" name="search_term" class="form-control me-2" placeholder="Enter search term">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">S.no</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for recipe in recipies %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{recipe.recipe_name}}</td>
+      <td>{{recipe.recipe_description}}</td>
+      <td><img src="{{ recipe.image.url }}" alt="{{ recipe.recipe_name }}" style="width: 150px; height: auto;"></td>
+      <td><a href="/delete_recipe/{{recipe.id}}"><button type="button" class="btn btn-danger">Delete</button></a>
+      <a href="/update_recipe/{{recipe.id}}"><button type="button" class="btn btn-primary">Update</button></a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
